@@ -1,6 +1,6 @@
 {
   "name": "@feinzer/v-modal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "license": "MIT",
   "author": {
@@ -11,6 +11,10 @@
     "type": "git",
     "url": "https://github.com/Feinzer/v-modal"
   },
+  "main": "dist/v-modal.umd.min.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
