@@ -125,7 +125,7 @@ export default {
 }
 
 .icon {
-  @apply h-6 w-6;
+  @apply h-6 w-6 min-h-6 min-w-6;
 }
 
 .actions-wrapper {
