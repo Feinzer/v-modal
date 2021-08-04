@@ -28,17 +28,19 @@
         </div>
       </slot>
     </div>
-    <slot name="actions" :close="close">
+    <slot name="actions" :accept="onAccept" :cancel="onCancel">
       <div :class="$style['actions-wrapper']">
         <button
-          @click="$emit('accept')"
+          v-if="accept"
+          @click="onAccept"
           type="button"
           :class="[$style.action, $style['action-accept']]"
         >
           {{ typeof accept == 'string' ? accept : 'Accept' }}
         </button>
         <button
-          @click="close"
+          v-if="cancel"
+          @click="onCancel"
           type="button"
           :class="[$style.action, $style['action-cancel']]"
         >
@@ -75,8 +77,11 @@ export default {
     },
   },
   methods: {
-    close() {
-      this.$parent.$emit('close');
+    onCancel() {
+      this.$parent.$emit('cancel');
+    },
+    onAccept() {
+      this.$parent.$emit('accept');
     },
   },
 };

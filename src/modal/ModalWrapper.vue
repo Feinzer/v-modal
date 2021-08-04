@@ -25,20 +25,22 @@ export default {
     },
   },
   methods: {
-    close() {
-      this.showBody = false;
-      setTimeout(() => {
-        this.$emit('close');
-      }, 50);
+    CloseModal() {
+      this.$emit('cancel');
     },
   },
   watch: {
     show: {
       handler(value) {
-        this.$emit(value ? 'show' : 'hide');
         if (value) {
+          this.$emit('show');
           setTimeout(() => {
             this.showBody = true;
+          }, 50);
+        } else {
+          this.showBody = false;
+          setTimeout(() => {
+            this.$emit('hide');
           }, 50);
         }
       },
@@ -60,7 +62,7 @@ export default {
             {this.$slots.overlay || (
               <div
                 class={[this.$style.cover, this.$style.overlay]}
-                onClick={this.close}
+                onClick={this.CloseModal}
               ></div>
             )}
             <transition name="open">
@@ -84,7 +86,7 @@ export default {
               {this.$slots.overlay || (
                 <div
                   class={[this.$style.cover, this.$style.overlay]}
-                  onClick={this.close}
+                  onClick={this.CloseModal}
                 ></div>
               )}
               <transition name="open">

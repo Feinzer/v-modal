@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <button @click="show = true">Show modal</button>
-    <ModalWrapper :show="show" @close="show = false" mobile keep-alive>
-      <BaseModal title="title" message="Message" />
+    <ModalWrapper
+      :show="show"
+      @cancel="show = false"
+      @accept="show = false"
+      mobile
+      keep-alive
+    >
+      <BaseModal title="title" message="Message" accept cancel />
     </ModalWrapper>
   </div>
 </template>
